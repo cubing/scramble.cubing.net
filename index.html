@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf8">
+    <title>scramble</title>
+    <link rel="stylesheet" href="./scramble.css">
+    <script src="./scramble.js" type="module" defer camera></script>
+  </head>
+  <body>
+    <twisty-player
+      id="main"
+      control-panel="none"
+      background="none"
+      camera-distance="6.5"
+    ></twisty-player>
+    <div id="text">
+      <span id="generating">Generating scramble…</span>
+      <twisty-alg-viewer for="main"></twisty-alg-viewer>
+    </div>
+  </body>
+</html>

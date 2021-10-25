@@ -28,6 +28,17 @@ twisty-player {
   color: white;
 }
 
+a.cubing-icon {
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+a.cubing-icon:hover,
+a.cubing-icon:focus {
+  text-decoration: underline;
+  transform: rotate(10deg);
+  opacity: 0.5;
+}
+
 #text {
   text-align: center;
   min-height: 2.5em;

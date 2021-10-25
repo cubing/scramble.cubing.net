@@ -37,7 +37,6 @@ cubingIcon.addEventListener("click", (e) => {
 
 const generating = document.querySelector("#generating");
 player.puzzle = puzzle;
-generating.textContent = `Generating ${eventNames[event]} scramble…`;
 textElem.classList.add(`event-${event}`);
 cubingIcon.classList.add(`event-${event}`);
 
@@ -45,11 +44,23 @@ customElements.whenDefined("twisty-player").then(() => {
   player.style.opacity = 1;
 });
 
-randomScrambleForEvent(event).then((a) => {
-  generating.textContent = "";
-  const player = document.querySelector("#main");
-  player.alg = a;
-  player.timestamp = 0;
-  player.tempoScale = 5;
-  player.play();
-});
+function go() {
+  player.alg = "";
+  generating.textContent = `Generating ${eventNames[event]} scramble…`;
+  randomScrambleForEvent(event).then((a) => {
+    generating.textContent = "";
+    player.alg = a;
+    player.timestamp = 0;
+    player.tempoScale = 5;
+    player.play();
+  });
+}
+go();
+
+document.querySelector("#refresh").addEventListener("click", go);
+if (
+  navigator.standalone ||
+  window.matchMedia("(display-mode: standalone)").matches
+) {
+  document.querySelector("#refresh").hidden = false;
+}

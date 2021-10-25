@@ -18,6 +18,11 @@ body {
   color: white;
 }
 
+section {
+  display: grid;
+  place-content: center;
+}
+
 twisty-player {
   width: 90vw;
   height: 40vh;
@@ -33,13 +38,13 @@ twisty-player {
   color: inherit;
 }
 
-a.cubing-icon {
+a.cubing-icon,
+#refresh {
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 a.cubing-icon:hover,
 a.cubing-icon:focus {
-  text-decoration: underline;
   transform: rotate(10deg);
   opacity: 0.5;
 }
@@ -116,6 +121,21 @@ a.cubing-icon:focus {
 
 #show-events:target {
   display: grid !important;
+}
+
+#refresh {
+  position: absolute;
+  bottom: 0.25em;
+  right: 0.25em;
+  font-size: calc(min(15vw, 15vh));
+  color: inherit;
+  text-decoration: none;
+}
+
+#refresh:hover,
+#refresh:focus {
+  transform: rotate(-10deg);
+  opacity: 0.5;
 }
 
 @media (prefers-color-scheme: light) {

@@ -35,10 +35,12 @@ cubingIcon.addEventListener("click", (e) => {
   player.hidden = !player.hidden;
 });
 
+const eventName = eventNames[event];
 const generating = document.querySelector("#generating");
 player.puzzle = puzzle;
 textElem.classList.add(`event-${event}`);
 cubingIcon.classList.add(`event-${event}`);
+document.title = `${eventName} scramble`;
 
 customElements.whenDefined("twisty-player").then(() => {
   player.style.opacity = 1;
@@ -46,7 +48,7 @@ customElements.whenDefined("twisty-player").then(() => {
 
 function go() {
   player.alg = "";
-  generating.textContent = `Generating ${eventNames[event]} scramble…`;
+  generating.textContent = `Generating ${eventName} scramble…`;
   randomScrambleForEvent(event).then((a) => {
     generating.textContent = "";
     player.hintFacelets = event === "minx" ? "none" : "floating";

@@ -30,7 +30,7 @@ twisty-player {
   margin: auto;
   font-size: calc(min(10vw, 6vh));
   height: 1em;
-  color: white;
+  color: inherit;
 }
 
 a.cubing-icon {
@@ -97,4 +97,12 @@ a.cubing-icon:focus {
 
 #show-events:target {
   display: grid !important;
+}
+
+@media (prefers-color-scheme: light) {
+  html,
+  body {
+    background: #eee;
+    color: #444;
+  }
 }

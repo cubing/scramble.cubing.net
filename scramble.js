@@ -25,10 +25,17 @@ const eventNames = {
 };
 
 const cubingIcon = document.querySelector(".cubing-icon");
-
+const showEventsElem = document.querySelector("#show-events");
 const textElem = document.querySelector("#text");
-const generating = document.querySelector("#generating");
 const player = document.querySelector("#main");
+cubingIcon.addEventListener("click", (e) => {
+  e.preventDefault();
+  showEventsElem.hidden = !showEventsElem.hidden;
+  textElem.hidden = !textElem.hidden;
+  player.hidden = !player.hidden;
+});
+
+const generating = document.querySelector("#generating");
 player.puzzle = puzzle;
 generating.textContent = `Generating ${eventNames[event]} scramble…`;
 textElem.classList.add(event);

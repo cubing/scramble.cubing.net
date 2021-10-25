@@ -49,6 +49,18 @@ twisty-player {
   animation: pulse 1s infinite;
 }
 
+#show-events {
+  padding: 0.25em;
+  margin: 1em;
+  border: 1px solid #aaa;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+#show-events .cubing-icon {
+  padding: 0.25em;
+}
+
 @keyframes pulse {
   0% {
     opacity: 1;
@@ -61,4 +73,12 @@ twisty-player {
   100% {
     opacity: 1;
   }
+}
+
+[hidden] {
+  display: none !important;
+}
+
+#show-events:target {
+  display: grid !important;
 }

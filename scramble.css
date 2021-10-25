@@ -13,13 +13,13 @@ body {
   padding: 0;
   font-family: Ubuntu, sans-serif;
   font-size: 2vw;
-  /* gap: 0.5em; */
+  /* gap: 0.25em; */
   background: #222;
   color: white;
 }
 
 twisty-player {
-  width: 50vw;
+  width: 90vw;
   height: 40vh;
   margin: auto;
   opacity: 0;
@@ -44,9 +44,14 @@ a.cubing-icon:focus {
   opacity: 0.5;
 }
 
+#event-selector {
+  margin-bottom: 0.5em;
+}
+
 #text {
+  margin: auto;
   text-align: center;
-  min-height: 2.5em;
+  min-height: 2em;
   max-width: 75vw;
   font-size: calc(min(10vw, 4vh));
 
@@ -54,11 +59,25 @@ a.cubing-icon:focus {
   place-content: center;
 }
 
-#text.minx {
+#text.event-minx {
   font-family: monospace;
   text-align: start;
   max-width: 95vw;
   font-size: calc(min(10vw, 3.5vh));
+}
+
+#text.event-555,
+#text.event-555bf,
+#text.event-666,
+#text.event-777 {
+  max-width: 90vw;
+  font-size: calc(min(10vw, 3vh));
+}
+
+/* SVG */
+#text.event-clock,
+#text.event-sq1 {
+  margin-bottom: 0.5em;
 }
 
 #generating {

@@ -49,6 +49,7 @@ function go() {
   generating.textContent = `Generating ${eventNames[event]} scramble…`;
   randomScrambleForEvent(event).then((a) => {
     generating.textContent = "";
+    player.hintFacelets = event === "minx" ? "none" : "floating";
     player.alg = a;
     player.timestamp = 0;
     player.tempoScale = 5;

@@ -24,12 +24,15 @@ const eventNames = {
   "555bf": "5x5x5 Blindfolded",
 };
 
+const cubingIcon = document.querySelector(".cubing-icon");
+
 const textElem = document.querySelector("#text");
 const generating = document.querySelector("#generating");
 const player = document.querySelector("#main");
 player.puzzle = puzzle;
 generating.textContent = `Generating ${eventNames[event]} scramble…`;
 textElem.classList.add(event);
+cubingIcon.classList.add(`event-${event}`);
 
 customElements.whenDefined("twisty-player").then(() => {
   player.style.opacity = 1;

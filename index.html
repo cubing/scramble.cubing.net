@@ -4,18 +4,14 @@
     <meta charset="utf8">
     <title>scramble</title>
     <link rel="stylesheet" href="./scramble.css">
+    <link rel="stylesheet" href="./cubing-icons.css">
     <script src="./scramble.js" type="module" defer camera></script>
   </head>
   <body>
-    <twisty-player
-      id="main"
-      control-panel="none"
-      background="none"
-      camera-distance="6.5"
-    ></twisty-player>
+    <a href="" class="cubing-icon"></a>
     <div id="text">
       <span id="generating">Generating scramble…</span>
       <twisty-alg-viewer for="main"></twisty-alg-viewer>
-    </div>
+    </div><twisty-player id="main" control-panel="none" background="none" camera-distance="6.5"></twisty-player>
   </body>
 </html>

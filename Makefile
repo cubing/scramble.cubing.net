@@ -1,3 +1,6 @@
+.PHONY: dev
+dev:
+	open http://localhost:3340; caddy file-server --listen :3340 --browse
 
 DEPLOY_SOURCE_PATH = ./
 DEPLOY_SITE_PATH   = scramble.cubing.net/

@@ -46,16 +46,21 @@ customElements.whenDefined("twisty-player").then(() => {
   player.style.opacity = 1;
 });
 
+let scramblePromise = randomScrambleForEvent(event);
+
 function go() {
   player.alg = "";
   generating.textContent = `Generating a fair, random ${eventName} scramble…`;
-  randomScrambleForEvent(event).then((a) => {
+  scramblePromise.then((a) => {
     generating.textContent = "";
     player.hintFacelets = event === "minx" ? "none" : "floating";
     player.alg = a;
     player.timestamp = 0;
     player.tempoScale = 10;
     player.play();
+
+    // Pre-request the next.
+    scramblePromise = randomScrambleForEvent(event);
   });
 }
 go();

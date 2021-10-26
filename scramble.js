@@ -67,3 +67,9 @@ if (
 ) {
   document.querySelector("#refresh").classList.add("force-show");
 }
+
+window.addEventListener("keydown", (e) => {
+  if (e.code === "Space") {
+    go(); // TODO: Avoid queueing multiple.
+  }
+});

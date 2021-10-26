@@ -54,7 +54,7 @@ function go() {
     player.hintFacelets = event === "minx" ? "none" : "floating";
     player.alg = a;
     player.timestamp = 0;
-    player.tempoScale = 5;
+    player.tempoScale = 10;
     player.play();
   });
 }

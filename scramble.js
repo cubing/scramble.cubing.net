@@ -62,8 +62,8 @@ go();
 
 document.querySelector("#refresh").addEventListener("click", go);
 if (
-  navigator.standalone ||
-  window.matchMedia("(display-mode: standalone)").matches
+  new URL(location.href).searchParams.get("show-refresh") === "true" ||
+  navigator.standalone // Safari workaround
 ) {
-  document.querySelector("#refresh").hidden = false;
+  document.querySelector("#refresh").classList.add("force-show");
 }

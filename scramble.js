@@ -48,7 +48,7 @@ customElements.whenDefined("twisty-player").then(() => {
 
 function go() {
   player.alg = "";
-  generating.textContent = `Generating ${eventName} scramble…`;
+  generating.textContent = `Generating a fair, random ${eventName} scramble…`;
   randomScrambleForEvent(event).then((a) => {
     generating.textContent = "";
     player.hintFacelets = event === "minx" ? "none" : "floating";

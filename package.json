@@ -1,0 +1,26 @@
+{
+  "name": "scramble.cubing.net",
+  "version": "0.1.0",
+  "description": "Get a scramble for cubing!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cubing/scramble.cubing.net.git"
+  },
+  "keywords": [],
+  "author": "Lucas Garron <code@garron.net>",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/cubing/scramble.cubing.net/issues"
+  },
+  "homepage": "https://github.com/cubing/scramble.cubing.net#readme",
+  "devDependencies": {
+    "barely-a-dev-server": "^0.2.3"
+  },
+  "scripts": {
+    "build": "node -e 'import(\"barely-a-dev-server\").then(s => s.barelyServe({entryRoot: \"src\", dev: false, esbuildOptions: {external: [\"crypto\", \"worker_threads\"]}}))'",
+    "dev": "node -e 'import(\"barely-a-dev-server\").then(s => s.barelyServe({entryRoot: \"src\", esbuildOptions: {external: [\"crypto\", \"worker_threads\"]}}))'"
+  },
+  "dependencies": {
+    "cubing": "^0.21.0-pre5"
+  }
+}

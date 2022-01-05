@@ -1,10 +1,10 @@
 import "cubing/twisty";
 import { randomScrambleForEvent } from "cubing/scramble";
-import { puzzleIDForWCAEvent } from "cubing/puzzles";
+import { wcaEventInfo } from "cubing/puzzles";
 import { TwistyPlayer } from "cubing/twisty";
 
 const event = new URL(location.href).searchParams.get("event") ?? "333";
-const puzzle = puzzleIDForWCAEvent(event);
+const puzzle = wcaEventInfo[event];
 
 const eventNames = {
   333: "3x3x3",

@@ -4,26 +4,7 @@ import { wcaEventInfo } from "cubing/puzzles";
 import { TwistyPlayer } from "cubing/twisty";
 
 const event = new URL(location.href).searchParams.get("event") ?? "333";
-const puzzle = wcaEventInfo[event];
-
-const eventNames = {
-  333: "3x3x3",
-  222: "2x2x2",
-  444: "4x4x4",
-  555: "5x5x5",
-  666: "6x6x6",
-  777: "7x7x7",
-  "333bf": "3x3x3 Blindfolded",
-  "333fm": "3x3x3 Fewest Moves",
-  "333oh": "3x3x3 One-Handed",
-  clock: "Clock",
-  minx: "Megaminx",
-  pyram: "Pyraminx",
-  skewb: "Skewb",
-  sq1: "Square-1",
-  "444bf": "4x4x4 Blindfolded",
-  "555bf": "5x5x5 Blindfolded",
-};
+const eventInfo = wcaEventInfo(event);
 
 const cubingIcon = document.querySelector("#event-selector") as HTMLElement;
 const showEventsElem = document.querySelector("#show-events") as HTMLElement;
@@ -36,9 +17,9 @@ cubingIcon.addEventListener("click", (e) => {
   player.hidden = !player.hidden;
 });
 
-const eventName = eventNames[event];
+const eventName = eventInfo.eventName;
 const generating = document.querySelector("#generating");
-player.puzzle = puzzle;
+player.puzzle = eventInfo.puzzleID;
 textElem.classList.add(`event-${event}`);
 cubingIcon.classList.add(`event-${event}`);
 document.title = `${eventName} scramble`;

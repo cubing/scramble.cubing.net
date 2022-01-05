@@ -17,7 +17,7 @@
     "barely-a-dev-server": "^0.2.3"
   },
   "scripts": {
-    "build": "node -e 'import(\"barely-a-dev-server\").then(s => s.barelyServe({entryRoot: \"src\", dev: false, esbuildOptions: {external: [\"crypto\", \"worker_threads\"]}}))'",
+    "build": "node -e 'import(\"barely-a-dev-server\").then(s => s.barelyServe({entryRoot: \"src\", outDir: \"dist/scramble.cubing.net\", dev: false, esbuildOptions: {external: [\"crypto\", \"worker_threads\"]}}))'",
     "dev": "node -e 'import(\"barely-a-dev-server\").then(s => s.barelyServe({entryRoot: \"src\", esbuildOptions: {external: [\"crypto\", \"worker_threads\"]}}))'"
   },
   "dependencies": {

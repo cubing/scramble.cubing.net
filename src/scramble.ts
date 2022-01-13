@@ -60,3 +60,8 @@ window.addEventListener("keydown", (e) => {
     go(); // TODO: Avoid queueing multiple.
   }
 });
+
+// TODO: Avoid trying to run for local dev?
+window.addEventListener("load", () => {
+  navigator.serviceWorker?.register("/sw.js");
+});

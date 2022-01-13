@@ -1,6 +1,7 @@
 {
   "name": "scramble.cubing.net",
   "version": "0.1.0",
+  "type": "module",
   "description": "Get a scramble for cubing!",
   "repository": {
     "type": "git",
@@ -14,11 +15,15 @@
   },
   "homepage": "https://github.com/cubing/scramble.cubing.net#readme",
   "devDependencies": {
-    "barely-a-dev-server": "^0.2.3"
+    "barely-a-dev-server": "^0.2.3",
+    "esbuild": "^0.14.11",
+    "workbox-cli": "^6.4.2",
+    "workbox-precaching": "^6.4.2"
   },
   "scripts": {
-    "build": "node -e 'import(\"barely-a-dev-server\").then(s => s.barelyServe({entryRoot: \"src\", outDir: \"dist/scramble.cubing.net\", dev: false, esbuildOptions: {external: [\"crypto\", \"worker_threads\"]}}))'",
-    "dev": "node -e 'import(\"barely-a-dev-server\").then(s => s.barelyServe({entryRoot: \"src\", esbuildOptions: {external: [\"crypto\", \"worker_threads\"]}}))'"
+    "build": "node script/build.js",
+    "dev": "node -e 'import(\"barely-a-dev-server\").then(s => s.barelyServe({entryRoot: \"src\", esbuildOptions: {external: [\"crypto\", \"worker_threads\"]}}))'",
+    "clean": "rm -rf ./dist"
   },
   "dependencies": {
     "cubing": "^0.22.0"

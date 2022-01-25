@@ -22,7 +22,7 @@
   },
   "scripts": {
     "build": "node script/build.js",
-    "dev": "node -e 'import(\"barely-a-dev-server\").then(s => s.barelyServe({entryRoot: \"src\", esbuildOptions: {external: [\"crypto\", \"worker_threads\"]}}))'",
+    "dev": "node -e 'import(\"barely-a-dev-server\").then(s => s.barelyServe({entryRoot: \"src\"}))'",
     "clean": "rm -rf ./dist"
   },
   "dependencies": {

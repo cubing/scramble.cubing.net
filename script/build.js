@@ -7,7 +7,6 @@ await barelyServe({
   entryRoot: "src",
   outDir: "dist/scramble.cubing.net",
   dev: false,
-  esbuildOptions: { external: ["crypto", "worker_threads"] },
 });
 
 // 😕 Can't use module worker yet.

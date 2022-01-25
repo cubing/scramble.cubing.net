@@ -1,10 +1,15 @@
 import "cubing/twisty";
 import { randomScrambleForEvent } from "cubing/scramble";
 import { wcaEventInfo } from "cubing/puzzles";
-import { TwistyPlayer } from "cubing/twisty";
+import { PuzzleID, TwistyPlayer } from "cubing/twisty";
+
+type EventInfo = { puzzleID: PuzzleID; eventName: string };
+const unofficialEvents: Record<string, EventInfo> = {
+  fto: { puzzleID: "fto", eventName: "FTO" },
+};
 
 const event = new URL(location.href).searchParams.get("event") ?? "333";
-const eventInfo = wcaEventInfo(event);
+const eventInfo = wcaEventInfo(event) ?? unofficialEvents[event]!;
 
 const cubingIcon = document.querySelector("#event-selector") as HTMLElement;
 const showEventsElem = document.querySelector("#show-events") as HTMLElement;
@@ -22,6 +27,7 @@ const generating = document.querySelector("#generating");
 player.puzzle = eventInfo.puzzleID;
 textElem.classList.add(`event-${event}`);
 cubingIcon.classList.add(`event-${event}`);
+cubingIcon.classList.add(`unofficial-${event}`);
 document.title = `${eventName} scramble`;
 
 customElements.whenDefined("twisty-player").then(() => {

@@ -78,6 +78,8 @@ window.addEventListener("keydown", (e) => {
 });
 
 // TODO: Avoid trying to run for local dev?
-window.addEventListener("load", () => {
-  navigator.serviceWorker?.register("/sw.js");
-});
+if (location.hostname === "scramble.cubing.net") {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker?.register("/sw.js");
+  });
+}

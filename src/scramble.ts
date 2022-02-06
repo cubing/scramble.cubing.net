@@ -16,6 +16,11 @@ const unofficialEvents: Record<string, EventInfo> = {
     eventName: "Kilominx",
     iconID: "kilominx",
   },
+  redi_cube: {
+    puzzleID: "redi_cube",
+    eventName: "Redi Cube",
+    iconID: "redi",
+  },
 };
 
 const event = new URL(location.href).searchParams.get("event") ?? "333";

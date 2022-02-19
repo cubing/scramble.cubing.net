@@ -1,6 +1,7 @@
-import "cubing/twisty";
-import { randomScrambleForEvent } from "cubing/scramble";
 import { wcaEventInfo } from "cubing/puzzles";
+import { randomScrambleForEvent } from "cubing/scramble";
+import { setDebug } from "cubing/search";
+import "cubing/twisty";
 import { PuzzleID, TwistyPlayer } from "cubing/twisty";
 
 type EventInfo = { puzzleID: PuzzleID; eventName: string; iconID?: string };
@@ -49,22 +50,17 @@ customElements.whenDefined("twisty-player").then(() => {
   player.style.opacity = "1";
 });
 
-let scramblePromise = randomScrambleForEvent(event);
-
-function go() {
+setDebug({ scramblePrefetchLevel: "immediate" });
+async function go() {
   player.alg = "";
   generating.textContent = `Generating a fair, random ${eventName} scramble…`;
-  scramblePromise.then((a) => {
-    generating.textContent = "";
-    player.hintFacelets = event === "minx" ? "none" : "floating";
-    player.alg = a;
-    player.timestamp = 0;
-    player.tempoScale = 10;
-    player.play();
-
-    // Pre-request the next.
-    scramblePromise = randomScrambleForEvent(event);
-  });
+  const scramble = await randomScrambleForEvent(event);
+  generating.textContent = "";
+  player.hintFacelets = event === "minx" ? "none" : "floating";
+  player.alg = scramble;
+  player.timestamp = 0;
+  player.tempoScale = 10;
+  player.play();
 }
 go();
 

@@ -17,7 +17,7 @@
   "devDependencies": {
     "barely-a-dev-server": "^0.2.3",
     "esbuild": "^0.14.11",
-    "workbox-cli": "^6.4.2",
+    "workbox-build": "^6.4.2",
     "workbox-precaching": "^6.4.2"
   },
   "scripts": {

@@ -24,7 +24,8 @@ const unofficialEvents: Record<string, EventInfo> = {
   },
 };
 
-const event = new URL(location.href).searchParams.get("event") ?? "333";
+const { searchParams } = new URL(location.href);
+const event = searchParams.get("event") ?? "333";
 const eventInfo: EventInfo = wcaEventInfo(event) ?? unofficialEvents[event]!;
 
 const cubingIcon = document.querySelector("#event-selector") as HTMLElement;
@@ -37,6 +38,13 @@ cubingIcon.addEventListener("click", (e) => {
   textElem.hidden = !textElem.hidden;
   player.hidden = !player.hidden;
 });
+
+const tempoScale = parseFloat(searchParams.get("tempo-scale") ?? "10");
+player.tempoScale = tempoScale;
+const visualization = searchParams.get("visualization");
+if (visualization === "2D") {
+  player.visualization = visualization;
+}
 
 const eventName = eventInfo.eventName;
 const generating = document.querySelector("#generating");
@@ -59,7 +67,6 @@ async function go() {
   player.hintFacelets = event === "minx" ? "none" : "floating";
   player.alg = scramble;
   player.timestamp = 0;
-  player.tempoScale = 10;
   player.play();
 }
 go();

@@ -6,11 +6,5 @@ RewriteEngine on
 RewriteCond %{HTTPS} off
 RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]
 
-# If on HTTPS, remove the www.
-RewriteEngine On
-RewriteCond %{HTTPS} on
-RewriteCond %{HTTP_HOST} ^www\. [NC]
-RewriteRule ^(.*)$ https://twizzle.net%{REQUEST_URI} [R=302,L]
-
 ExpiresActive off
 Header always set Cache-Control "max-age=300; must-revalidate"

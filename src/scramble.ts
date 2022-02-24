@@ -4,6 +4,16 @@ import { setDebug } from "cubing/search";
 import "cubing/twisty";
 import { PuzzleID, TwistyPlayer } from "cubing/twisty";
 
+function updateURLParam(key, value, defaultValue): void {
+  const url = new URL(location.href);
+  if (value === defaultValue) {
+    url.searchParams.delete(key);
+  } else {
+    url.searchParams.set(key, value);
+  }
+  window.history.replaceState("", "", url.toString());
+}
+
 type EventInfo = { puzzleID: PuzzleID; eventName: string; iconID?: string };
 const unofficialEvents: Record<string, EventInfo> = {
   fto: { puzzleID: "fto", eventName: "FTO" },
@@ -29,21 +39,57 @@ const event = searchParams.get("event") ?? "333";
 const eventInfo: EventInfo = wcaEventInfo(event) ?? unofficialEvents[event]!;
 
 const cubingIcon = document.querySelector("#event-selector") as HTMLElement;
-const showEventsElem = document.querySelector("#show-events") as HTMLElement;
+const optionsElem = document.querySelector("#options") as HTMLElement;
 const textElem = document.querySelector("#text") as HTMLElement;
 const player = document.querySelector("#main") as TwistyPlayer;
-cubingIcon.addEventListener("click", (e) => {
-  e.preventDefault();
-  showEventsElem.hidden = !showEventsElem.hidden;
+function toggleOptions(e?: Event) {
+  e?.preventDefault();
+  optionsElem.hidden = !optionsElem.hidden;
   textElem.hidden = !textElem.hidden;
   player.hidden = !player.hidden;
+}
+cubingIcon.addEventListener("click", toggleOptions);
+if (searchParams.get("debug-options") === "true") {
+  toggleOptions();
+}
+
+window.addEventListener("keydown", (e) => {
+  if (e.code === "Slash") {
+    toggleOptions();
+    e.preventDefault();
+  }
 });
+
+for (const button of document.querySelectorAll("#event-grid button")) {
+  button.addEventListener("click", () => {
+    updateURLParam("event", button.getAttribute("data-event"), "333");
+    location.reload();
+  });
+}
 
 const tempoScale = parseFloat(searchParams.get("tempo-scale") ?? "10");
 player.tempoScale = tempoScale;
-const visualization = searchParams.get("visualization");
-if (visualization === "2D") {
-  player.visualization = visualization;
+const tempoSlider = document.querySelector(
+  "#speed-wrapper input"
+) as HTMLInputElement;
+tempoSlider.addEventListener("input", () => {
+  player.tempoScale = parseFloat(tempoSlider.value);
+  updateURLParam("tempo-scale", tempoSlider.value, "10");
+});
+tempoSlider.value = tempoScale.toString();
+
+const visualization2DCheckbox = optionsElem.querySelector(
+  "#visualization-2D"
+) as HTMLInputElement;
+visualization2DCheckbox.addEventListener("input", () => {
+  const newVisualization = visualization2DCheckbox.checked ? "2D" : "auto";
+  player.visualization = newVisualization;
+  updateURLParam("visualization", newVisualization, "auto");
+});
+const visualizationIs2D = searchParams.get("visualization") === "2D";
+visualization2DCheckbox.checked = visualizationIs2D;
+if (visualizationIs2D) {
+  player.visualization = "2D";
 }
 
 const eventName = eventInfo.eventName;

@@ -41,7 +41,7 @@ twisty-player {
 
 a.cubing-icon,
 #event-grid button,
-#refresh {
+#rescramble {
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
@@ -122,7 +122,7 @@ a.cubing-icon:focus,
 #event-grid {
   padding: 0.25em;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 1em;
 }
 
@@ -170,7 +170,7 @@ a.cubing-icon:focus,
   display: grid !important;
 }
 
-#refresh {
+#rescramble {
   position: absolute;
   padding: 0.5em 0.25em 0 1em;
   bottom: 0;
@@ -181,17 +181,17 @@ a.cubing-icon:focus,
   touch-action: manipulation;
 }
 
-#refresh:hover,
-#refresh:focus {
+#rescramble:hover,
+#rescramble:focus {
   opacity: 0.4;
 }
 
-#refresh.force-show {
+#rescramble.force-show {
   display: block !important;
 }
 
 @media all and (display-mode: standalone) {
-  #refresh {
+  #rescramble {
     display: block !important;
   }
 }

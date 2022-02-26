@@ -42,8 +42,12 @@ const cubingIcon = document.querySelector("#event-selector") as HTMLElement;
 const optionsElem = document.querySelector("#options") as HTMLElement;
 const textElem = document.querySelector("#text") as HTMLElement;
 const player = document.querySelector("#main") as TwistyPlayer;
-function toggleOptions(e?: Event) {
+function toggleOptions(e?: Event, force?: boolean) {
   e?.preventDefault();
+  // Important: this is *not* equivalent to: `force !== optionsElem.hidden` (`force` can be `undefined`)
+  if (force === !optionsElem.hidden) {
+    return;
+  }
   optionsElem.hidden = !optionsElem.hidden;
   textElem.hidden = !textElem.hidden;
   player.hidden = !player.hidden;
@@ -105,7 +109,8 @@ customElements.whenDefined("twisty-player").then(() => {
 });
 
 setDebug({ scramblePrefetchLevel: "immediate" });
-async function go() {
+async function rescramble() {
+  toggleOptions(undefined, false);
   player.alg = "";
   generating.textContent = `Generating a fair, random ${eventName} scramble…`;
   const scramble = await randomScrambleForEvent(event);
@@ -115,19 +120,35 @@ async function go() {
   player.timestamp = 0;
   player.play();
 }
-go();
+rescramble();
 
-document.querySelector("#refresh").addEventListener("click", go);
+const rescrambleElem = document.querySelector("#rescramble");
+rescrambleElem.addEventListener("click", rescramble);
+const showRescrambleCheckbox = document.querySelector(
+  "#show-rescramble"
+) as HTMLInputElement;
 if (
-  new URL(location.href).searchParams.get("show-refresh") === "true" ||
   (navigator as any).standalone // Safari workaround
 ) {
-  document.querySelector("#refresh").classList.add("force-show");
+  rescrambleElem.classList.add("force-show");
+  showRescrambleCheckbox.checked = true;
+  showRescrambleCheckbox.disabled = true;
+} else {
+  const showRescramble =
+    new URL(location.href).searchParams.get("show-rescramble") === "true";
+  showRescrambleCheckbox.checked = showRescramble;
+  rescrambleElem.classList.toggle("force-show", showRescramble);
+  showRescrambleCheckbox.addEventListener("input", (e) => {
+    e.preventDefault();
+    const showRescramble = showRescrambleCheckbox.checked;
+    updateURLParam("show-rescramble", showRescramble.toString(), "false");
+    rescrambleElem.classList.toggle("force-show", showRescramble);
+  });
 }
 
 window.addEventListener("keydown", (e) => {
   if (e.code === "Space") {
-    go(); // TODO: Avoid queueing multiple.
+    rescramble(); // TODO: Avoid queueing multiple.
   }
 });
 

@@ -15,10 +15,10 @@
   },
   "homepage": "https://github.com/cubing/scramble.cubing.net#readme",
   "devDependencies": {
-    "barely-a-dev-server": "^0.2.3",
-    "esbuild": "^0.14.11",
-    "workbox-build": "^6.4.2",
-    "workbox-precaching": "^6.4.2"
+    "barely-a-dev-server": "^0.2.6",
+    "esbuild": "^0.14.28",
+    "workbox-build": "^6.5.2",
+    "workbox-precaching": "^6.5.2"
   },
   "scripts": {
     "build": "node script/build.js",
@@ -26,6 +26,6 @@
     "clean": "rm -rf ./dist"
   },
   "dependencies": {
-    "cubing": "^0.25.13"
+    "cubing": "^0.26.0"
   }
 }

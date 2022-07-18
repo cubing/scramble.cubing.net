@@ -26,6 +26,6 @@
     "clean": "rm -rf ./dist"
   },
   "dependencies": {
-    "cubing": "^0.26.0"
+    "cubing": "^0.27.0"
   }
 }

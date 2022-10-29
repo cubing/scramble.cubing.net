@@ -97,7 +97,7 @@ if (visualizationIs2D) {
 }
 
 const eventName = eventInfo.eventName;
-const generating = document.querySelector("#generating");
+const generating = document.querySelector("#generating")!;
 player.puzzle = eventInfo.puzzleID;
 textElem.classList.add(`event-${event}`);
 cubingIcon.classList.add(`event-${eventInfo.iconID ?? event}`);
@@ -122,7 +122,7 @@ async function rescramble() {
 }
 rescramble();
 
-const rescrambleElem = document.querySelector("#rescramble");
+const rescrambleElem = document.querySelector("#rescramble")!;
 rescrambleElem.addEventListener("click", rescramble);
 const showRescrambleCheckbox = document.querySelector(
   "#show-rescramble",

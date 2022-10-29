@@ -74,7 +74,7 @@ for (const button of document.querySelectorAll("#event-grid button")) {
 const tempoScale = parseFloat(searchParams.get("tempo-scale") ?? "10");
 player.tempoScale = tempoScale;
 const tempoSlider = document.querySelector(
-  "#speed-wrapper input"
+  "#speed-wrapper input",
 ) as HTMLInputElement;
 tempoSlider.addEventListener("input", () => {
   player.tempoScale = parseFloat(tempoSlider.value);
@@ -83,7 +83,7 @@ tempoSlider.addEventListener("input", () => {
 tempoSlider.value = tempoScale.toString();
 
 const visualization2DCheckbox = optionsElem.querySelector(
-  "#visualization-2D"
+  "#visualization-2D",
 ) as HTMLInputElement;
 visualization2DCheckbox.addEventListener("input", () => {
   const newVisualization = visualization2DCheckbox.checked ? "2D" : "auto";
@@ -125,7 +125,7 @@ rescramble();
 const rescrambleElem = document.querySelector("#rescramble");
 rescrambleElem.addEventListener("click", rescramble);
 const showRescrambleCheckbox = document.querySelector(
-  "#show-rescramble"
+  "#show-rescramble",
 ) as HTMLInputElement;
 if (
   (navigator as any).standalone // Safari workaround

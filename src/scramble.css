@@ -130,7 +130,8 @@ a.cubing-icon:focus,
   background: none;
   border: none;
   height: 100%;
-  padding: 0; /* Safari workaround */
+  padding: 0;
+  /* Safari workaround */
 }
 
 #event-grid button:hover {
@@ -210,11 +211,13 @@ a.cubing-icon:focus,
 }
 
 @media (prefers-color-scheme: light) {
+
   html,
   body {
     background: #eee;
     color: #444;
   }
+
   #options hr {
     border-top: 1px solid #aaa;
   }

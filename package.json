@@ -23,9 +23,11 @@
   "scripts": {
     "build": "node script/build.js",
     "dev": "node -e 'import(\"barely-a-dev-server\").then(s => s.barelyServe({entryRoot: \"src\"}))'",
-    "clean": "rm -rf ./dist"
+    "clean": "rm -rf ./dist",
+    "format": "npx rome format --write src"
   },
   "dependencies": {
-    "cubing": "^0.27.0"
+    "cubing": "^0.27.0",
+    "rome": "^10.0.4-beta"
   }
 }

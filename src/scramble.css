@@ -162,6 +162,19 @@ a.cubing-icon:focus,
   }
 }
 
+.timer-link-span {
+  text-align: center;
+  font-size: 1.25em;
+}
+
+#options a {
+  color: #669df5;
+}
+
+#options a:visited {
+  color: #af73d5;
+}
+
 [hidden] {
   display: none !important;
 }

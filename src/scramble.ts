@@ -158,3 +158,10 @@ if (location.hostname === "scramble.cubing.net") {
     navigator.serviceWorker?.register("/sw.js");
   });
 }
+
+const timerLink = document.querySelector(
+  ".timer-link-span a",
+) as HTMLAnchorElement;
+const url = new URL(timerLink.href);
+url.searchParams.set("event", event);
+timerLink.href = url.toString();

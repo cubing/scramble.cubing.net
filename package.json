@@ -27,7 +27,7 @@
     "format": "npx rome format --write src"
   },
   "dependencies": {
-    "cubing": "^0.27.0",
+    "cubing": "^0.31.4",
     "rome": "^10.0.4-beta"
   }
 }

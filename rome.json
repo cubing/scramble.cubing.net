@@ -6,19 +6,7 @@
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true,
-      "correctness": {
-        "noDelete": "off",
-        "useSimplifiedLogicExpression": "off",
-        "useTemplate": "off"
-      },
-      "nursery": {
-        "noUnusedVariables": "off"
-      },
-      "style": {
-        "noNegationElse": "off",
-        "noShoutyConstants": "off"
-      }
+      "recommended": true
     }
   }
 }

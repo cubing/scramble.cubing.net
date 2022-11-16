@@ -42,6 +42,7 @@ const cubingIcon = document.querySelector("#event-selector") as HTMLElement;
 const optionsElem = document.querySelector("#options") as HTMLElement;
 const textElem = document.querySelector("#text") as HTMLElement;
 const player = document.querySelector("#main") as TwistyPlayer;
+player.experimentalInitialHintFaceletsAnimation = "none";
 function toggleOptions(e?: Event, force?: boolean) {
   e?.preventDefault();
   // Important: this is *not* equivalent to: `force !== optionsElem.hidden` (`force` can be `undefined`)

@@ -1,3 +1,4 @@
+import { Alg } from "cubing/alg";
 import { wcaEventInfo } from "cubing/puzzles";
 import { randomScrambleForEvent } from "cubing/scramble";
 import { setDebug } from "cubing/search";
@@ -110,6 +111,7 @@ customElements.whenDefined("twisty-player").then(() => {
 });
 
 setDebug({ scramblePrefetchLevel: "immediate" });
+let displayedScramble: Alg | null = null;
 async function rescramble() {
   toggleOptions(undefined, false);
   player.alg = "";
@@ -118,6 +120,7 @@ async function rescramble() {
   generating.textContent = "";
   player.hintFacelets = event === "minx" ? "none" : "floating";
   player.alg = scramble;
+  displayedScramble = scramble;
   player.timestamp = 0;
   player.play();
 }
@@ -166,3 +169,26 @@ const timerLink = document.querySelector(
 const url = new URL(timerLink.href);
 url.searchParams.set("event", event);
 timerLink.href = url.toString();
+
+function flashScramble() {
+  document
+    .querySelector("twisty-alg-viewer")
+    ?.animate(
+      [{ backgroundColor: "gray" }, { backgroundColor: "transparent" }],
+      {
+        duration: 250,
+        easing: "ease-out",
+      },
+    );
+}
+document.addEventListener("copy", (e: ClipboardEvent) => {
+  if (globalThis.getSelection?.()?.toString() === "" && displayedScramble) {
+    console.log(
+      "Detected no selected text, so the clipboard will be set to the scramble:",
+      displayedScramble.toString(),
+    );
+    e.clipboardData?.setData("text/plain", displayedScramble.toString());
+    e.preventDefault();
+    flashScramble();
+  }
+});

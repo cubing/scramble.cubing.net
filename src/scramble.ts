@@ -122,6 +122,7 @@ async function rescramble() {
   player.alg = scramble;
   displayedScramble = scramble;
   player.timestamp = 0;
+  player.flash();
   player.play();
 }
 rescramble();

@@ -16,8 +16,8 @@ update-Makefile:
 	if [ "$(shell uname -s)" = "Darwin" ] ; then sed -i "" ${UPDATE_MAKEFILE_SED_ARGS} ; fi
 	if [ "$(shell uname -s)" != "Darwin" ] ; then sed -i"" ${UPDATE_MAKEFILE_SED_ARGS} ; fi
 
-DEPLOY_SOURCE_PATH = ./dist/scramble.cubing.net/
 DEPLOY_SITE_PATH   = scramble.cubing.net/
+DEPLOY_SOURCE_PATH = "./dist/${DEPLOY_SITE_PATH}"
 DEPLOY_SFTP_PATH   = "towns.dreamhost.com:~/${DEPLOY_SITE_PATH}"
 
 .PHONY: deploy

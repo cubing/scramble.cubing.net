@@ -15,9 +15,9 @@
   },
   "homepage": "https://github.com/cubing/scramble.cubing.net#readme",
   "devDependencies": {
+    "@biomejs/biome": "^1.0.0",
     "barely-a-dev-server": "^0.3.6",
     "esbuild": "^0.15.14",
-    "rome": "^10.0.1",
     "workbox-build": "^6.5.2",
     "workbox-precaching": "^6.5.2"
   },
@@ -25,8 +25,8 @@
     "build": "node script/build.js",
     "dev": "node -e 'import(\"barely-a-dev-server\").then(s => s.barelyServe({entryRoot: \"src\", devDomain: \"scramble.localhost\", port: 3335}))'",
     "clean": "rm -rf ./dist",
-    "lint": "npx rome check src",
-    "format": "npx rome format --write src"
+    "lint": "npx @biomejs/biome check src",
+    "format": "npx @biomejs/biome format --write src"
   },
   "dependencies": {
     "cubing": "^0.42.0"

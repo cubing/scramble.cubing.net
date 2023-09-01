@@ -1,7 +1,7 @@
 import { Alg } from "cubing/alg";
 import { wcaEventInfo } from "cubing/puzzles";
 import { randomScrambleForEvent } from "cubing/scramble";
-import { setDebug } from "cubing/search";
+import { setSearchDebug } from "cubing/search";
 import "cubing/twisty";
 import { PuzzleID, TwistyPlayer } from "cubing/twisty";
 
@@ -110,7 +110,7 @@ customElements.whenDefined("twisty-player").then(() => {
   player.style.opacity = "1";
 });
 
-setDebug({ scramblePrefetchLevel: "immediate" });
+setSearchDebug({ scramblePrefetchLevel: "immediate" });
 let displayedScramble: Alg | null = null;
 async function rescramble() {
   toggleOptions(undefined, false);

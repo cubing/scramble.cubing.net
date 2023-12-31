@@ -29,6 +29,6 @@
     "format": "npx @biomejs/biome format --write src"
   },
   "dependencies": {
-    "cubing": "^0.44.0"
+    "cubing": "^0.44.1"
   }
 }

@@ -1,11 +1,11 @@
-import { build } from "esbuild";
 import { barelyServe } from "barely-a-dev-server";
+import { build } from "esbuild";
 import { injectManifest } from "workbox-build";
 
 // TODO: Exclude `sw.ts`?
 await barelyServe({
   entryRoot: "src",
-  outDir: "dist/scramble.cubing.net",
+  outDir: "dist/web/scramble.cubing.net",
   dev: false,
 });
 
@@ -13,12 +13,12 @@ await barelyServe({
 await build({
   entryPoints: ["src/sw.ts"],
   bundle: true,
-  outfile: "dist/scramble.cubing.net/sw.js",
+  outfile: "dist/web/scramble.cubing.net/sw.js",
 });
 
 await injectManifest({
-  globDirectory: "dist/scramble.cubing.net/",
+  globDirectory: "dist/web/scramble.cubing.net/",
   globPatterns: ["**/*.{js,ico,html,png,css,ts,ttf,txt}"],
-  swDest: "dist/scramble.cubing.net/sw.js",
-  swSrc: "dist/scramble.cubing.net/sw.js",
+  swDest: "dist/web/scramble.cubing.net/sw.js",
+  swSrc: "dist/web/scramble.cubing.net/sw.js",
 });

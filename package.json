@@ -16,6 +16,7 @@
   "homepage": "https://github.com/cubing/scramble.cubing.net#readme",
   "devDependencies": {
     "@biomejs/biome": "^1.1.2",
+    "@cubing/deploy": "^0.1.4",
     "barely-a-dev-server": "^0.6.0",
     "esbuild": "^0.19.2",
     "workbox-build": "^7.0.0",
@@ -30,5 +31,8 @@
   },
   "dependencies": {
     "cubing": "^0.45.0"
+  },
+  "@cubing/deploy": {
+    "https://scramble.cubing.net/": {}
   }
 }

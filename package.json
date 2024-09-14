@@ -30,7 +30,7 @@
     "format": "npx @biomejs/biome format --write src"
   },
   "dependencies": {
-    "cubing": "^0.51.2"
+    "cubing": "^0.52.0"
   },
   "@cubing/deploy": {
     "https://scramble.cubing.net/": {}

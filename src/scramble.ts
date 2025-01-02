@@ -1,9 +1,9 @@
-import { Alg } from "cubing/alg";
+import type { Alg } from "cubing/alg";
 import { wcaEventInfo } from "cubing/puzzles";
 import { randomScrambleForEvent } from "cubing/scramble";
 import { setSearchDebug } from "cubing/search";
 import "cubing/twisty";
-import { PuzzleID, TwistyPlayer } from "cubing/twisty";
+import type { PuzzleID, TwistyPlayer } from "cubing/twisty";
 
 function updateURLParam(key, value, defaultValue): void {
   const url = new URL(location.href);
@@ -42,6 +42,7 @@ const unofficialEvents: Record<string, EventInfo> = {
 
 const { searchParams } = new URL(location.href);
 const event = searchParams.get("event") ?? "333";
+// biome-ignore lint/style/noNonNullAssertion: TODO
 const eventInfo: EventInfo = wcaEventInfo(event) ?? unofficialEvents[event]!;
 
 const cubingIcon = document.querySelector("#event-selector") as HTMLElement;
@@ -78,13 +79,13 @@ for (const button of document.querySelectorAll("#event-grid button")) {
   });
 }
 
-const tempoScale = parseFloat(searchParams.get("tempo-scale") ?? "10");
+const tempoScale = Number.parseFloat(searchParams.get("tempo-scale") ?? "10");
 player.tempoScale = tempoScale;
 const tempoSlider = document.querySelector(
   "#speed-wrapper input",
 ) as HTMLInputElement;
 tempoSlider.addEventListener("input", () => {
-  player.tempoScale = parseFloat(tempoSlider.value);
+  player.tempoScale = Number.parseFloat(tempoSlider.value);
   updateURLParam("tempo-scale", tempoSlider.value, "10");
 });
 tempoSlider.value = tempoScale.toString();
@@ -104,6 +105,7 @@ if (visualizationIs2D) {
 }
 
 const eventName = eventInfo.eventName;
+// biome-ignore lint/style/noNonNullAssertion: DOM binding
 const generating = document.querySelector("#generating")!;
 player.puzzle = eventInfo.puzzleID;
 textElem.classList.add(`event-${event}`);
@@ -132,12 +134,14 @@ async function rescramble() {
 }
 rescramble();
 
+// biome-ignore lint/style/noNonNullAssertion: DOM binding
 const rescrambleElem = document.querySelector("#rescramble")!;
 rescrambleElem.addEventListener("click", rescramble);
 const showRescrambleCheckbox = document.querySelector(
   "#show-rescramble",
 ) as HTMLInputElement;
 if (
+  // biome-ignore lint/suspicious/noExplicitAny: Workaround
   (navigator as any).standalone // Safari workaround
 ) {
   rescrambleElem.classList.add("force-show");

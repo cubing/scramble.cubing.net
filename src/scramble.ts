@@ -33,6 +33,11 @@ const unofficialEvents: Record<string, EventInfo> = {
     eventName: "Redi Cube",
     iconID: "redi",
   },
+  baby_fto: {
+    puzzleID: "baby_fto",
+    eventName: "Baby FTO",
+    iconID: "pyramorphix",
+  },
 };
 
 const { searchParams } = new URL(location.href);

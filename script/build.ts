@@ -15,7 +15,7 @@ await build({
 
 await injectManifest({
   globDirectory: "dist/web/scramble.cubing.net/",
-  globPatterns: ["**/*.{js,ico,html,png,css,ts,ttf,txt}"],
+  globPatterns: ["**/*.{js,ico,html,png,css,ts,ttf,woff,woff2,txt}"],
   swDest: "dist/web/scramble.cubing.net/sw.js",
   swSrc: "dist/web/scramble.cubing.net/sw.js",
 });

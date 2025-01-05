@@ -1,13 +1,10 @@
 import { barelyServe } from "barely-a-dev-server";
 import { build } from "esbuild";
 import { injectManifest } from "workbox-build";
+import { barelyServeOptions } from "./barelyServeOptions";
 
 // TODO: Exclude `sw.ts`?
-await barelyServe({
-  entryRoot: "src",
-  outDir: "dist/web/scramble.cubing.net",
-  dev: false,
-});
+await barelyServe({ ...barelyServeOptions, dev: false });
 
 // 😕 Can't use module worker yet.
 await build({

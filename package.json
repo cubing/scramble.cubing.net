@@ -17,19 +17,14 @@
   "devDependencies": {
     "@biomejs/biome": "^1.8.3",
     "@cubing/deploy": "^0.1.4",
-    "barely-a-dev-server": "^0.6.1",
+    "barely-a-dev-server": "^0.7.0",
     "esbuild": "^0.20.1",
     "workbox-build": "^7.1.1",
     "workbox-precaching": "^7.1.0"
   },
-  "scripts": {
-    "build": "node script/build.js",
-    "dev": "node -e 'import(\"barely-a-dev-server\").then(s => s.barelyServe({entryRoot: \"src\", devDomain: \"scramble.localhost\", port: 3335}))'",
-    "clean": "rm -rf ./dist",
-    "lint": "npx @biomejs/biome check src",
-    "format": "npx @biomejs/biome format --write src"
-  },
   "dependencies": {
+    "@cubing/icons": "^2.1.0-pre.4",
+    "@fontsource/ubuntu": "^5.1.1",
     "cubing": "^0.53.10"
   },
   "@cubing/deploy": {

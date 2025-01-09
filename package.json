@@ -23,7 +23,7 @@
     "workbox-precaching": "^7.1.0"
   },
   "dependencies": {
-    "@cubing/icons": "^2.1.0-pre.4",
+    "@cubing/icons": "link:@cubing/icons",
     "@fontsource/ubuntu": "^5.1.1",
     "cubing": "^0.53.10"
   },

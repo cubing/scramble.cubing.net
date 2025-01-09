@@ -36,7 +36,7 @@ const unofficialEvents: Record<string, EventInfo> = {
   baby_fto: {
     puzzleID: "baby_fto",
     eventName: "Baby FTO",
-    iconID: "pyramorphix",
+    iconID: "baby_fto",
   },
 };
 

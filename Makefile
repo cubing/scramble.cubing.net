@@ -16,11 +16,11 @@ clean:
 
 .PHONY: lint
 lint: setup
-	npx @biomejs/biome check
+	bun x @biomejs/biome check
 
 .PHONY: format
 format: setup
-	npx @biomejs/biome check --write
+	bun x @biomejs/biome check --write
 
 .PHONY: deploy
 deploy: build

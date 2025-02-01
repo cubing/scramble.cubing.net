@@ -133,7 +133,7 @@ a.cubing-icon:focus,
 }
 
 #event-grid button:hover {
-  cursor: pointer
+  cursor: pointer;
 }
 
 #options hr {
@@ -209,7 +209,6 @@ a.cubing-icon:focus,
 }
 
 @media (prefers-color-scheme: light) {
-
   html,
   body {
     background: #eee;

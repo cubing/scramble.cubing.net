@@ -5,6 +5,6 @@ export const barelyServeOptions: Parameters<typeof barelyServe>[0] = {
   outDir: "dist/web/scramble.cubing.net",
   bundleCSS: true,
   esbuildOptions: {
-    loader: {  ".woff": "copy", ".woff2": "copy" },
+    loader: { ".woff": "copy", ".woff2": "copy" },
   },
 };

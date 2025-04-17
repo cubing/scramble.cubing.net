@@ -25,3 +25,7 @@ format: setup
 .PHONY: deploy
 deploy: build
 	bun x @cubing/deploy
+
+.PHONY: reset
+reset: clean
+	rm -rf ./node_modules

@@ -39,7 +39,9 @@ twisty-player {
 a.cubing-icon,
 #event-grid button,
 #rescramble {
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
   text-decoration: none;
 }
 
@@ -92,7 +94,6 @@ a.cubing-icon:focus,
 }
 
 #options {
-  padding: 0.25em;
   margin: 1em;
   padding: 1em;
   border: 1px solid #aaa;
@@ -143,10 +144,6 @@ a.cubing-icon:focus,
   border-top: 1px solid white;
 }
 
-#show-events .cubing-icon {
-  padding: 0.25em;
-}
-
 @keyframes pulse {
   0% {
     opacity: 0.25;
@@ -175,11 +172,8 @@ a.cubing-icon:focus,
 }
 
 [hidden] {
+  /* biome-ignore lint/complexity/noImportantStyles: TODO */
   display: none !important;
-}
-
-#show-events:target {
-  display: grid !important;
 }
 
 #rescramble {
@@ -199,11 +193,13 @@ a.cubing-icon:focus,
 }
 
 #rescramble.force-show {
+  /* biome-ignore lint/complexity/noImportantStyles: TODO */
   display: block !important;
 }
 
 @media all and (display-mode: standalone) {
   #rescramble {
+    /* biome-ignore lint/complexity/noImportantStyles: TODO */
     display: block !important;
   }
 }

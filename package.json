@@ -15,9 +15,11 @@
   },
   "homepage": "https://github.com/cubing/scramble.cubing.net#readme",
   "devDependencies": {
-    "@biomejs/biome": "^1.9.4",
+    "@biomejs/biome": "^2.5.0",
     "@cubing/deploy": "^0.1.4",
+    "@cubing/dev-config": "^0.10.1",
     "barely-a-dev-server": "^0.7.0",
+    "bun-dx": "^0.1.4",
     "esbuild": "^0.20.1",
     "workbox-build": "^7.1.1",
     "workbox-precaching": "^7.1.0"

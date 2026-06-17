@@ -5,14 +5,25 @@ import { setSearchDebug } from "cubing/search";
 import "cubing/twisty";
 import type { PuzzleID, TwistyPlayer } from "cubing/twisty";
 
-function updateURLParam(key, value, defaultValue): void {
+function mustExist<T>(t: T | null): NonNullable<T> {
+  if (!t) {
+    throw new Error("Missing element");
+  }
+  return t;
+}
+
+function updateURLParam(
+  key: string,
+  value: string,
+  defaultValue: string,
+): void {
   const url = new URL(location.href);
   if (value === defaultValue) {
     url.searchParams.delete(key);
   } else {
     url.searchParams.set(key, value);
   }
-  window.history.replaceState("", "", url.toString());
+  globalThis.window.history.replaceState("", "", url.toString());
 }
 
 type EventInfo = { puzzleID: PuzzleID; eventName: string; iconID?: string };
@@ -65,7 +76,7 @@ if (searchParams.get("debug-options") === "true") {
   toggleOptions();
 }
 
-window.addEventListener("keydown", (e) => {
+globalThis.window.addEventListener("keydown", (e) => {
   if (e.code === "Slash") {
     toggleOptions();
     e.preventDefault();
@@ -74,7 +85,11 @@ window.addEventListener("keydown", (e) => {
 
 for (const button of document.querySelectorAll("#event-grid button")) {
   button.addEventListener("click", () => {
-    updateURLParam("event", button.getAttribute("data-event"), "333");
+    updateURLParam(
+      "event",
+      mustExist(button.getAttribute("data-event")),
+      "333",
+    );
     location.reload();
   });
 }
@@ -128,11 +143,12 @@ async function rescramble() {
   player.hintFacelets = event === "minx" ? "none" : "floating";
   player.alg = scramble;
   displayedScramble = scramble;
-  player.timestamp = 0;
+  // biome-ignore lint/suspicious/noExplicitAny: TODO: update `cubing.js` API.
+  player.timestamp = 0 as DOMHighResTimeStamp as any;
   player.flash();
   player.play();
 }
-rescramble();
+void rescramble();
 
 // biome-ignore lint/style/noNonNullAssertion: DOM binding
 const rescrambleElem = document.querySelector("#rescramble")!;
@@ -160,9 +176,9 @@ if (
   });
 }
 
-window.addEventListener("keydown", (e) => {
+globalThis.window.addEventListener("keydown", (e) => {
   if (e.code === "Space") {
-    rescramble(); // TODO: Avoid queueing multiple.
+    void rescramble(); // TODO: Avoid queueing multiple.
   }
 });
 
